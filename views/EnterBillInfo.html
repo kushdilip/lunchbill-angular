@@ -9,7 +9,7 @@
 			<li ng-repeat="person in persons">
 				<span >{{person.name}}</span>
 				<a src="images/user_delete.png" ng-click="deletePerson($index)">
-					<img class="delete-button" src="images/user_delete.png" alt="Delete">
+					<img class="delete-button" src="images/user_delete.png" title="Delete" alt="Delete">
 				</a>
 			</li>
 		</ol>
@@ -27,7 +27,7 @@
 			<li ng-repeat="item in items">
 				<span >{{item.name}}, {{item.price}}</span>
 				<a src="images/user_delete.png" ng-click="deleteItem($index)">
-					<img class="delete-button" src="images/user_delete.png" alt="Delete">
+					<img class="delete-button" src="images/delete.png" title="Delete" alt="Delete">
 				</a>
 			</li>
 		</ol>

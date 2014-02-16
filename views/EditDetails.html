@@ -1,7 +1,7 @@
 <h2>Edit Details</h2>
 <h4>Check the boxex in matrix accordingly</h4>
 
-<table border="2px solid black">
+<table class="table" border="2px solid black">
 	<THEAD>
 		<th >Item\Person</th>
 		<th ng-repeat="person in persons" > {{person.name}}</th>
@@ -9,7 +9,7 @@
 	<tr ng-repeat="item in items" >
 		<th>{{item.name}}, {{item.price}}</th>
 		<td ng-repeat="person in persons" >
-			<input type="checkbox" 
+			<input type="checkbox" class="largerCheckbox"
 			ng-click="changeTotal($event.target.checked, $parent.$index, $index)"/>
 		</td>
 	</tr>

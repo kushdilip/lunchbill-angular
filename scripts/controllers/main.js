@@ -32,18 +32,19 @@ myApp.controller('SurveyController',['$scope','$routeParams','$location', 'surve
 myApp.controller('EnterBillInfoCtrl', ['$scope', function ($scope) {
 	
 	$scope.persons = [
-		{id:1, name:"Rahul", done: false},
-		{id:2, name:"Ramesh", done: false},
-		{id:3, name:"Amresh", done: false}
+		// {name:"Rahul"},
+		// {name:"Ramesh"},
+		// {name:"Amresh"}
 	];
 
-	$scope.delete = function(index){
-	      $scope.surveys.splice(index,1);
+	$scope.deletePerson = function(index){
+		console.log(index, $scope.persons);
+	    $scope.persons.splice(index,1);
+	    console.log(index, $scope.persons);
 	}
 
 	$scope.addPerson = function () {
-	    $scope.persons.push({text:$scope.person, done:false});
-	    $scope.formTodoText = '';
-  	};
-  
+	    $scope.persons.push({name:$scope.person});
+	    $scope.person = '';
+  	};  
 }]);

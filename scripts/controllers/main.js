@@ -37,7 +37,11 @@ myApp.controller('EnterBillInfoCtrl', ['$rootScope', '$scope', function ($rootSc
 
 	//Person methods
 	$scope.addPerson = function () {
-		$scope.persons.push({name:$scope.person, amount: 0});
+		if($scope.person.length > 0 && $scope.person.length < 20)
+			$scope.persons.push({name:$scope.person, amount: 0});
+		else
+			alert("Please enter name of max length 20");
+
 		$scope.person = '';
 	};  
 
@@ -47,7 +51,13 @@ myApp.controller('EnterBillInfoCtrl', ['$rootScope', '$scope', function ($rootSc
 
 	//Food Item methods
 	$scope.addItem = function () {
-		$scope.items.push({name:$scope.item});
+		var temp = $scope.item.split(',');
+		var item = {name: temp[0], price: parseInt(temp[1])};
+		if(typeof item.name === 'string' && item.price >= 0)
+			$scope.items.push({name:item.name, price: item.price, persons: []});
+		else
+			alert("Please enter item and price in correct format");
+
 		$scope.item = '';
 	};  
 
@@ -58,10 +68,34 @@ myApp.controller('EnterBillInfoCtrl', ['$rootScope', '$scope', function ($rootSc
 
 myApp.controller('EditdetailsCtrl', ['$rootScope', '$scope', function ($rootScope, $scope) {
 	console.log($scope.persons);
-
 	$scope.changeTotal = function (action, i, j) {
-		console.log(action, i, j);
-		
+		if(action)
+		{
+			$scope.items[i].persons.push(j);
+
+		}
+		else
+		{
+			var d = $scope.items[i].persons.indexOf(j);
+			$scope.items[i].persons.splice(d, 1);
+		}
+
+		$scope.persons.forEach(function (person, index, array) {
+			person.amount = 0;
+		});
+
+		$scope.items.forEach(function (item, index, array) {
+			var share = 0;
+			if(item.persons.length > 0)
+			{
+				share = item.price / item.persons.length;
+			}
+			console.log(share);
+
+			$scope.persons.forEach(function (person, index, array) {
+				person.amount += share;
+			});
+		})
 	}
 }]);
 

@@ -7,7 +7,7 @@
 		<td ng-repeat="person in persons" > {{person.name}}</td>
 	</tr>
 	<tr ng-repeat="item in items" >
-		<td>{{item.name}}</td>
+		<td>{{item.name}}, {{item.price}}</td>
 		<td ng-repeat="person in persons" >
 			<input type="checkbox" 
 			ng-click="changeTotal($event.target.checked, $parent.$index, $index)"/>

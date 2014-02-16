@@ -15,7 +15,7 @@
 		</ol>
 
 		<form >
-			<input placeholder="Name of persons here - 1 by 1" type="text" ng-model="person" tabindex="1" autofocus /></br>
+			<input placeholder="Name of persons here - 1 by 1" type="text" ng-model="person" tabindex="1" autofocus  /></br>
 			<button class="btn btn-info" ng-click="addPerson()">Add</button>
 		</form>
 
@@ -25,7 +25,7 @@
 		<h5>Food Items(eg. Biriyani, 250)</h5>
 		<ol>
 			<li ng-repeat="item in items">
-				<span >{{item.name}}</span>
+				<span >{{item.name}}, {{item.price}}</span>
 				<a src="images/user_delete.png" ng-click="deleteItem($index)">
 					<img class="delete-button" src="images/user_delete.png" alt="Delete">
 				</a>

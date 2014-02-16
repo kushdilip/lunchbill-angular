@@ -92,8 +92,9 @@ myApp.controller('EditdetailsCtrl', ['$rootScope', '$scope', function ($rootScop
 			}
 			console.log(share);
 
-			$scope.persons.forEach(function (person, index, array) {
-				person.amount += share;
+			$scope.persons.forEach(function (person, pIndex, pArray) {
+				if(item.persons.indexOf(pIndex) >= 0)
+					person.amount += share;
 			});
 		})
 	}

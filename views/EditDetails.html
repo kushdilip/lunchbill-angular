@@ -1,0 +1,11 @@
+<h2>Edit Details</h2>
+<h4>Check the boxex in matrix accordingly</h4>
+
+<table>
+	<li ng-repeat="person in persons">
+		<span >{{person.name}}</span>
+		<a src="images/user_delete.png" ng-click="deletePerson($index)">
+			<img class="delete-button" src="images/user_delete.png" alt="Delete">
+		</a>
+	</li>
+</ol>

@@ -2,38 +2,43 @@
 <h4>Please Enter Below Information </br>(Just Type the text and press Enter)</h4>
 
 
+<div class="clearfix">
+	<div id="list-left">
+		<h5>People</h5>
+		<ol>
+			<li ng-repeat="person in persons">
+				<span >{{person.name}}</span>
+				<a src="images/user_delete.png" ng-click="deletePerson($index)">
+					<img class="delete-button" src="images/user_delete.png" alt="Delete">
+				</a>
+			</li>
+		</ol>
 
-<div id="list-left">
-	<h5>People</h5>
-	<ol ui-sortable ng-model="persons">
-		<li ng-repeat="person in persons">
-			<span >{{person.name}}</span>
-			<a src="images/user_delete.png" ng-click="deletePerson($index)">
-				<img class="delete-button" src="images/user_delete.png" alt="Delete">
-			</a>
-		</li>
-	</ol>
+		<form>
+			<input placeholder="Enter the name of people" type="text" ng-model="person" tabindex="1" autofocus /></br>
+			<button class="btn btn-info" ng-click="addPerson()">Add</button>
+		</form>
 
-	<form>
-		<input placeholder="Enter the name of people" type="text" ng-model="person" tabindex="1" autofocus /></br>
-		<button class="btn btn-info" ng-click="addPerson()">Add</button>
-	</form>
+	</div>
 
+	<div id="list-right">
+		<h5>Food Items</h5>
+		<ol>
+			<li ng-repeat="item in items">
+				<span >{{item.name}}</span>
+				<a src="images/user_delete.png" ng-click="deleteItem($index)">
+					<img class="delete-button" src="images/user_delete.png" alt="Delete">
+				</a>
+			</li>
+		</ol>
+
+		<form>
+			<input placeholder="Enter the name of items" type="text" ng-model="item" tabindex="2" /></br>
+			<button class="btn btn-info" ng-click="addItem()">Add</button>
+		</form>
+	</div>
 </div>
 
-<div id="list-right">
-	<h5>Food Items</h5>
-	<ol ui-sortable ng-model="item">
-		<li ng-repeat="item in items">
-			<span >{{item.name}}</span>
-			<a src="images/user_delete.png" ng-click="deleteItem($index)">
-				<img class="delete-button" src="images/user_delete.png" alt="Delete">
-			</a>
-		</li>
-	</ol>
-
-	<form>
-		<input placeholder="Enter the name of items" type="text" ng-model="item" tabindex="2" /></br>
-		<button class="btn btn-info" ng-click="addItem()">Add</button>
-	</form>
+<div>
+	<a type="button" class="btn btn-sm btn-success" ng-href="#/editdetails" tabindex="3">Proceed</a>
 </div>

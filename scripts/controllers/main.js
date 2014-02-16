@@ -29,32 +29,43 @@ myApp.controller('SurveyController',['$scope','$routeParams','$location', 'surve
 	}])
 
 
-myApp.controller('EnterBillInfoCtrl', ['$scope', function ($scope) {
+myApp.controller('EnterBillInfoCtrl', ['$rootScope', '$scope', function ($rootScope, $scope) {
 	$scope.persons = [];
 	$scope.items = [];
-
+	$rootScope.persons = $scope.persons;
+	$rootScope.items = $scope.items;
 
 	//Person methods
 	$scope.addPerson = function () {
 		$scope.persons.push({name:$scope.person});
 		$scope.person = '';
+//		$rootScope.persons = $scope.persons;
 	};  
 
 	$scope.deletePerson = function(index){
-		console.log(index, $scope.persons);
 		$scope.persons.splice(index,1);
-		console.log(index, $scope.persons);
+//		$rootScope.persons = $scope.persons;		
 	}
 
 	//Food Item methods
 	$scope.addItem = function () {
 		$scope.items.push({name:$scope.item});
 		$scope.item = '';
+		// $rootScope.items = $scope.items;		
 	};  
 
 	$scope.deleteItem = function(index){
 		// console.log(index, $scope.persons);
 		$scope.items.splice(index,1);
 		// console.log(index, $scope.persons);
+		// $rootScope.items = $scope.items;		
 	}
+}]);
+
+myApp.controller('EditdetailsCtrl', ['$rootScope', '$scope', function ($rootScope, $scope) {
+	console.log($scope.persons);
+}]);
+
+myApp.controller('AboutCtrl', ['$scope', function ($scope) {
+	
 }]);

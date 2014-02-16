@@ -6,12 +6,10 @@ body {
   width: 100%;
 }
 
-h2 {
+h1 {
   font-size: 2em;
-  
-  font-family: megrim, fantasy;
-  background: #1CA89C;
-  padding: 40px;
+  background: #28C1C7;
+  padding: 20px;
   margin: 0;
   color: #333;
   text-align: center;
@@ -47,3 +45,20 @@ height: 24px;
 /** @group skills **/
 #list-left { display: block; float: left; margin-right: 30px; }
 #list-right { display: block; float: left;}
+
+/*.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}*/
+
+
+/** @group clearfix **/
+.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: inline-block; }
+ 
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; }

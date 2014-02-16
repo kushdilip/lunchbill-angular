@@ -88,7 +88,7 @@ myApp.controller('EditdetailsCtrl', ['$rootScope', '$scope', function ($rootScop
 			var share = 0;
 			if(item.persons.length > 0)
 			{
-				share = item.price / item.persons.length;
+				share = Math.round(item.price / item.persons.length);
 			}
 			console.log(share);
 

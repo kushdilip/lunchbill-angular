@@ -1,3 +1,35 @@
+var chartOptions = {
+	chart: {
+		plotBackgroundColor: null,
+		plotBorderWidth: null,
+		plotShadow: false
+	},
+	title: {
+		text: 'Distribution of amount'
+	},
+	tooltip: {
+		pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+	},
+	plotOptions: {
+		pie: {
+			allowPointSelect: true,
+			cursor: 'pointer',
+			dataLabels: {
+				enabled: true,
+				color: '#000000',
+				connectorColor: '#000000',
+				formatter: function() {
+					return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+				}
+			}
+		}
+	},
+	series: [{
+		type: 'pie',
+		name: 'Bill Distribution'
+	}]
+};
+
 myApp.controller('SurveyListcontroller', ['$scope', 'surveys', function ($scope, surveys) {
 	$scope.surveys = surveys.get();
 
@@ -68,6 +100,7 @@ myApp.controller('EnterBillInfoCtrl', ['$rootScope', '$scope', function ($rootSc
 
 myApp.controller('EditdetailsCtrl', ['$rootScope', '$scope', function ($rootScope, $scope) {
 	console.log($scope.persons);
+
 	$scope.changeTotal = function (action, i, j) {
 		if(action)
 		{
@@ -96,10 +129,78 @@ myApp.controller('EditdetailsCtrl', ['$rootScope', '$scope', function ($rootScop
 				if(item.persons.indexOf(pIndex) >= 0)
 					person.amount += share;
 			});
-		})
+		});
+
+		$scope.updateChart();
+		
 	}
+
+	$scope.updateChart = function () {
+		//Charting Code
+
+		var data= [];
+		var totalCounted = 0;
+		var totalAmount = 0;
+		$scope.persons.forEach(function (person, index, array) {
+			data.push([person.name, person.amount]);
+			totalCounted += person.amount;
+		});
+
+		$scope.items.forEach(function (item, index, array) {
+			totalAmount += item.price;
+		});
+
+		data.push({name: 'Remaining', y: totalAmount - totalCounted, sliced: true, selected: true});
+
+		var browser_chart = chartOptions
+		browser_chart.series[0].data = data
+		$scope.piechart = browser_chart
+	}
+
+	$scope.updateChart();
 }]);
 
 myApp.controller('AboutCtrl', ['$scope', function ($scope) {
-	
+
 }]);
+
+
+myApp.directive('chart',function(){
+    return {
+        restrict: 'E',
+        template: '<div></div>',
+        scope: {
+            chartData: "=chartId"
+        },
+        transclude:true,
+        replace: true,
+
+        link: function (scope, element, attrs) {
+            var chartsDefaults = {
+                chart: {
+                    renderTo: element[0],
+                    type: attrs.type || null,
+                    height: attrs.height,
+                    width: attrs.width
+                },
+//                colors: [attrs.color]
+            };
+            var chart;
+            //Update when charts data changes
+            scope.$watch(function() { return scope.chartData; }, function(value) {
+                if(!value) return;
+                var deepCopy = true;
+                var newSettings = {};
+                $.extend(deepCopy, newSettings, chartsDefaults, scope.chartData);
+                if (!chart) {
+                    chart = new Highcharts.Chart(newSettings);
+
+                } else {
+                    for (var i = 0; i < chart.series.length; i++) {
+                        chart.series[i].setData(scope.chartData.series[i].data)
+                    }
+                }
+            }, true);
+        }
+    };
+})

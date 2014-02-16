@@ -2,20 +2,22 @@
 <h4>Check the boxex in matrix accordingly</h4>
 
 <table border="2px solid black">
-	<tr>
-		<td width="50px">Item\Person</td>
-		<td ng-repeat="person in persons" > {{person.name}}</td>
-	</tr>
+	<THEAD>
+		<th >Item\Person</th>
+		<th ng-repeat="person in persons" > {{person.name}}</th>
+	</THEAD>
 	<tr ng-repeat="item in items" >
-		<td>{{item.name}}, {{item.price}}</td>
+		<th>{{item.name}}, {{item.price}}</th>
 		<td ng-repeat="person in persons" >
 			<input type="checkbox" 
 			ng-click="changeTotal($event.target.checked, $parent.$index, $index)"/>
 		</td>
 	</tr>
 	<tr>
-		<td width="50px">Total</td>
+		<th>Total</th>
 		<td ng-repeat="person in persons" > {{person.amount}}</td>
 	</tr>
 
 </table>
+
+<chart chart-id="piechart" color="red"></chart>

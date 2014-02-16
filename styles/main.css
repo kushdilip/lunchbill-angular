@@ -39,7 +39,11 @@ li input[type="checkbox"] {
   color: #ddd;
 }
 
-.delete-person-button {
+.delete-button {
 width: 24px;
 height: 24px;
 }
+
+/** @group skills **/
+#list-left { display: block; float: left; margin-right: 30px; }
+#list-right { display: block; float: left;}

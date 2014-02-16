@@ -11,13 +11,17 @@
         <!-- build:css({.tmp,app}) styles/main.css -->
         <link rel="stylesheet" href="styles/bootstrap.css">
         <link rel="stylesheet" href="styles/main.css">
+        <link href="styles/bootstrap-combined.no-icons.min.css" rel="stylesheet">
         <!-- endbuild -->
 </head>
   <body>
     <!-- Add your site or application content here -->
     <div class="container">
-        <div class="navbar-brand">Do It Yourself Surveys</div>
-        <div class="navbar">
+        <h1>Divide Lunch Bills Easily</h1>
+
+        <div ng-view/>
+        
+        <!-- <div class="navbar">
             <div class="nav-collapse collapse bs-navbar-collapse navbar-inner">
               <ul class="nav navbar-nav">
                 <li class="active">
@@ -34,10 +38,10 @@
                 </li>
               </ul>
             </div>
-        </div>
+        </div> -->
     </div>
-    <div ng-view/>
     <script src="scripts/libs/angular/angular.js"></script>
+    <script src="scripts/libs/angular/angular-ui-min.js"></script>
     <script src="scripts/libs/lodash.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/services/main.js"></script>

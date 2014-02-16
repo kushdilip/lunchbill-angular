@@ -27,3 +27,23 @@ myApp.controller('SurveyController',['$scope','$routeParams','$location', 'surve
 		$location.path('/surveys');
 	}
 }])
+
+
+myApp.controller('EnterBillInfoCtrl', ['$scope', function ($scope) {
+	
+	$scope.persons = [
+		{id:1, name:"Rahul", done: false},
+		{id:2, name:"Ramesh", done: false},
+		{id:3, name:"Amresh", done: false}
+	];
+
+	$scope.delete = function(index){
+	      $scope.surveys.splice(index,1);
+	}
+
+	$scope.addPerson = function () {
+	    $scope.persons.push({text:$scope.person, done:false});
+	    $scope.formTodoText = '';
+  	};
+  
+}]);

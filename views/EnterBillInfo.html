@@ -1,0 +1,18 @@
+</br>
+<h4>Please Enter Below Information</h4>
+
+
+<p> Enter the names of people </p>
+
+<form>
+	<input class="add-input" placeholder="name" type="text" ng-model="person" ng-model-instant />
+	<button class="btn btn-info" ng-click="addPerson()">Add</button>
+</form>
+
+
+<ol ui-sortable ng-model="persons">
+  <li ng-repeat="person in persons">
+  	<span >{{person.name}}</span>
+  	<input class="delete-person-button" type="image" src="images/user_delete.png" alt="Delete">
+  </li>
+</ol>

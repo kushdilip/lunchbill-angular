@@ -62,3 +62,13 @@ height: 24px;
  
 html[xmlns] .clearfix { display: block; }
 * html .clearfix { height: 1%; }
+
+#global-footer {
+    font-size: 150%;
+    clear: both;
+    margin-top: 40px;
+    padding: 20px 0px 12px;
+    font: 9px "ff-dagny-web-pro-1","ff-dagny-web-pro-2",Helvetica,Arial,sans-serif;
+    background-color: rgb(213, 215, 219);
+    text-align: center;
+}

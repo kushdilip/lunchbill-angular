@@ -4,7 +4,7 @@
 
 <div class="clearfix">
 	<div id="list-left">
-		<h5>People</h5>
+		<h5>People(eg. Ramesh)</h5>
 		<ol>
 			<li ng-repeat="person in persons">
 				<span >{{person.name}}</span>
@@ -14,15 +14,15 @@
 			</li>
 		</ol>
 
-		<form>
-			<input placeholder="Enter the name of people" type="text" ng-model="person" tabindex="1" autofocus /></br>
+		<form >
+			<input placeholder="Name of persons here - 1 by 1" type="text" ng-model="person" tabindex="1" autofocus /></br>
 			<button class="btn btn-info" ng-click="addPerson()">Add</button>
 		</form>
 
 	</div>
 
 	<div id="list-right">
-		<h5>Food Items</h5>
+		<h5>Food Items(eg. Biriyani, 250)</h5>
 		<ol>
 			<li ng-repeat="item in items">
 				<span >{{item.name}}</span>
@@ -33,7 +33,7 @@
 		</ol>
 
 		<form>
-			<input placeholder="Enter the name of items" type="text" ng-model="item" tabindex="2" /></br>
+			<input placeholder="Name of items, amount - 1 by 1" type="text" ng-model="item" tabindex="2" /></br>
 			<button class="btn btn-info" ng-click="addItem()">Add</button>
 		</form>
 	</div>

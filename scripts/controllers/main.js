@@ -37,33 +37,32 @@ myApp.controller('EnterBillInfoCtrl', ['$rootScope', '$scope', function ($rootSc
 
 	//Person methods
 	$scope.addPerson = function () {
-		$scope.persons.push({name:$scope.person});
+		$scope.persons.push({name:$scope.person, amount: 0});
 		$scope.person = '';
-//		$rootScope.persons = $scope.persons;
 	};  
 
 	$scope.deletePerson = function(index){
 		$scope.persons.splice(index,1);
-//		$rootScope.persons = $scope.persons;		
 	}
 
 	//Food Item methods
 	$scope.addItem = function () {
 		$scope.items.push({name:$scope.item});
 		$scope.item = '';
-		// $rootScope.items = $scope.items;		
 	};  
 
 	$scope.deleteItem = function(index){
-		// console.log(index, $scope.persons);
 		$scope.items.splice(index,1);
-		// console.log(index, $scope.persons);
-		// $rootScope.items = $scope.items;		
 	}
 }]);
 
 myApp.controller('EditdetailsCtrl', ['$rootScope', '$scope', function ($rootScope, $scope) {
 	console.log($scope.persons);
+
+	$scope.changeTotal = function (action, i, j) {
+		console.log(action, i, j);
+		
+	}
 }]);
 
 myApp.controller('AboutCtrl', ['$scope', function ($scope) {
